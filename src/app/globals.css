@@ -17,11 +17,82 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #0b3d91;
+  color: white;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+.navbar ul li {
+  margin-left: 20px;
+}
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+}
+.cta-button {
+  background-color: #ffba08;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.hero {
+  background-image: url('../public/images/hero_blue.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+.hero-text {
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+}
+.featured-yachts {
+  padding: 40px 20px;
+  background-color: #a2bbe7;
+}
+.featured-yachts-text{
+  color: #ffffff;
+}
+.yacht-grid {
+  display: flex;
+  gap: 20px;
+}
+.yacht {
+  flex: 1;
+  text-align: center;
+}
+footer {
+  background-color: #0b3d91;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.social-links a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
 }
