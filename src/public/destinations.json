@@ -1,6 +1,6 @@
 [
     { "name": "Mediterranean", "image": "/images/mediterranean.jpg" },
     { "name": "Caribbean", "image": "/images/caribbean.jpg" },
-    { "name": "Seychelles", "image": "/images/seychelles.jpg" },
-    { "name": "Greek Isles", "image": "/images/greek_island.jpg" }
+    { "name": "Seychelles", "image": "/images/seychelles.webp" },
+    { "name": "Greek Isles", "image": "/images/greek_isles.jpg" }
   ]

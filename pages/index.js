@@ -7,8 +7,8 @@ import Image from "next/image"
 import placeholder from "@/public/images/placeholder.svg"
 import "@/app/globals.css"
 import { Suspense } from "react"
-import Yachts from "@/public/yachts.json"
-import Destinations from "@/public/destinations.json"
+import Destinations from "@/public/destinations"
+import Yachts from "@/public/yachts"
 
 export default function YachtCharterHome() {
   return (
@@ -185,7 +185,12 @@ export default function YachtCharterHome() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div>
               <h3 className="text-lg font-semibold mb-4">About Us</h3>
-              <p className="text-sm">Luxury yacht charters for unforgettable experiences on the open seas.</p>
+              <p className="text-sm">We provide a full range of services throughout the Adriatic Sea for our valued customers. 
+              Luxury Yachts and Luxury Villas can now be rented in the fastest and most reliable way through our website. We provide a professional service that fully meets your needs. 
+              Contact us with confidence! <br/>
+              All your wishes and dreams are the most important for us!<br/>
+              Peter Novak<br/>
+              Zlatna Luka Yachting</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -203,7 +208,7 @@ export default function YachtCharterHome() {
                 <li className="flex items-center"><MapPin className="h-4 w-4 mr-2" /> 123 Marina Blvd, Luxury Port, Serbia</li>
               </ul>
             </div>
-            <div>
+            <div><br/>
               <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
               <form className="space-y-2">
                 <Input className="bg-gray-800 border-gray-700" placeholder="Enter your email" type="email" />
