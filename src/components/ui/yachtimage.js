@@ -17,8 +17,7 @@ export default function YachtImage(props) {
               const url = await getDownloadURL(item);
               return url;
             })); 
-            
-            console.log(urls.at(1));
+        
             const urlsLink = urls.at(1);
             if(urlsLink){
                 setUrlLink(urlsLink); // Set the list of image URLs
