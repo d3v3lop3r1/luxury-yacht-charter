@@ -52,6 +52,9 @@ body {
   text-decoration: none;
   border-radius: 5px;
 }
+.active{
+  text-decoration: underline;
+}
 .hero-home {
   background-image: url('../public/images/hero_blue.webp');
   background-repeat: no-repeat;
