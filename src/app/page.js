@@ -70,10 +70,12 @@ export default function YachtCharterHome() {
         <section className="featured-yachts w-full py-12 md:py-24 lg:py-32 bg-gray-200">
           <div className="container px-4 md:px-6">
             <h2 className="featured-yachts-text text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Our Exclusive Yacht Collection</h2>
-            <Yachts/>
+            <Suspense fallback={<h2>Loading...</h2>}>
+              <Yachts/>
+            </Suspense>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-blue-200">
+        <section className="w-full py-12 md:py-24 lg:py-32 destinations">
           <div className="container px-4 md:px-6">
             <Suspense>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Discover Breathtaking Destinations</h2>

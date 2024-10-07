@@ -72,7 +72,11 @@ body {
 }
 .featured-yachts {
   padding: 40px 20px;
-  background-color: #a2bbe7;
+  background-color: #788fb7;
+}
+
+.destinations {
+  background-color: #4e739d;
 }
 .featured-yachts-text{
   color: #ffffff;

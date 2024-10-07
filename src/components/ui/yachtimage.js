@@ -1,7 +1,7 @@
 import { storage } from "@/firebase";
 import { listAll, ref, getDownloadURL } from "firebase/storage";
 import Image from "next/image";
-// import placeholder from "@/public/images/placeholder.svg";
+import placeholder from "@/public/images/placeholder.svg";
 import { useState } from 'react';
 
 
@@ -20,7 +20,11 @@ export default function YachtImage(props) {
             
             console.log(urls.at(1));
             const urlsLink = urls.at(1);
-            setUrlLink(urlsLink); // Set the list of image URLs
+            if(urlsLink){
+                setUrlLink(urlsLink); // Set the list of image URLs
+            }else{
+                setUrlLink(placeholder);
+            }
             
         } catch (error) {
             console.error("Error fetching images", error);
@@ -36,8 +40,7 @@ export default function YachtImage(props) {
             width={600}
             height={400}
             className="w-full h-64 object-cover mb-4 rounded-md"
-            />
-          
+            /> 
         </div>
     );
   }
