@@ -25,7 +25,7 @@ export default function YachtCharterHome() {
           <div className="container px-4 md:px-6">
             <h2 className="featured-yachts-text text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Our Exclusive Yacht Collection</h2>
             <Suspense fallback={<h2>Loading...</h2>}>
-              <Yachts shortText={false} detailsBtn={true}/>
+              <Yachts shortText={true} detailsBtn={false}/>
             </Suspense>
           </div>
         </section>
