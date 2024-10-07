@@ -52,7 +52,7 @@ body {
   text-decoration: none;
   border-radius: 5px;
 }
-.hero {
+.hero-home {
   background-image: url('../public/images/hero_blue.webp');
   background-repeat: no-repeat;
   background-size: cover;
@@ -65,6 +65,21 @@ body {
   text-align: center;
   color: white;
 }
+
+.hero-yachts {
+  background-image: url('../public/images/hero_yachts.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
 .hero-text {
   position: absolute;
   bottom: 30px;

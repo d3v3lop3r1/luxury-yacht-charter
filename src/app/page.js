@@ -1,44 +1,26 @@
 'use client'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Anchor, Calendar, Globe, MapPin, Phone } from "lucide-react"
+import { Anchor, Calendar, Globe, Phone } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import placeholder from "@/public/images/placeholder.svg"
 import "@/app/globals.css"
 import { Suspense } from "react"
-import Destinations from "@/public/destinations"
 import Yachts from "@/components/ui/yachts"
+import Hero from "../components/ui/hero"
+import Destinations from "../components/ui/destinations"
 
 
 export default function YachtCharterHome() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="hero w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Experience the Ultimate Luxury on the Open Seas
-                </h1>
-                <p className="mx-auto max-w-[700px] md:text-xl">
-                  Discover our fleet of world-class yachts, tailored experiences, and breathtaking destinations.
-                </p>
-              </div>
-              <div className="space-x-4">
-                <Button sizes="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link  href="/yachts">
-                  Explore Yachts
-                </Link>
-                </Button>
-                <Button sizes="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-black">
-                  View Destinations
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Hero 
+          style="hero-home w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white" 
+          mainText = "Experience the Ultimate Luxury on the Open Seas"
+          smallText = "Discover our fleet of world-class yachts, tailored experiences, and breathtaking destinations."
+          />
         <section className="featured-yachts w-full py-12 md:py-24 lg:py-32 bg-gray-200">
           <div className="container px-4 md:px-6">
             <h2 className="featured-yachts-text text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Our Exclusive Yacht Collection</h2>
@@ -47,30 +29,8 @@ export default function YachtCharterHome() {
             </Suspense>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 destinations">
-          <div className="container px-4 md:px-6">
-            <Suspense>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Discover Breathtaking Destinations</h2>
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                {Destinations.map((destination) => (
-                  <div key={destination.name} className="relative group overflow-hidden rounded-lg">
-                    <Image
-                      src={destination.image}
-                      alt={destination.name}
-                      width={400}
-                      height={300}
-                      className="w-full h-64 object-cover transition-transform group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <h3 className="text-white text-2xl font-bold">{destination.name}</h3>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-            </Suspense>
-          </div>
-        </section>
+        <Destinations/>
+
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-600">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Why Choose Our Charter Services?</h2>

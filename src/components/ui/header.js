@@ -11,22 +11,22 @@ export default function Header(){
           <span className="ml-2 text-2xl font-bold text-primary">Zlatna Luka</span>
         </Link>
         <nav className="ml-auto flex items-center gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="/">
             Home
           </Link>
           <Link className="text-sm font-medium hover:underline underline-offset-4" href="/yachts">
             Yacht Fleet
           </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="/destinations">
             Destinations
           </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="/charters">
             Charter Packages
           </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="/about-us">
             About Us
           </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
+          <Link className="text-sm font-medium hover:underline underline-offset-4" href="/contact">
             Contact
           </Link>
           <Button>Book Now</Button>

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Anchor, Calendar, Globe, MapPin, Phone } from "lucide-react"
+import { MapPin, Phone } from "lucide-react"
 import { Input } from "@/components/ui/input"
 
 import Link from "next/link"
