@@ -1,6 +1,6 @@
 'use client'
 import Hero from "@/components/ui/hero"
-import YachtsView from "@/components/ui/yachts"
+import YachtsDetailed from "@/components/ui/yachtsdetailed"
 import { Suspense } from "react"
 
 
@@ -15,7 +15,7 @@ export default function Yachts() {
           <div className="container px-4 md:px-6">
             <h2 className="featured-yachts-text text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Our Exclusive Yacht Collection</h2>
             <Suspense fallback={<h2>Loading...</h2>}>
-              <YachtsView/>
+              <YachtsDetailed/>
             </Suspense>
           </div>
         </section>
