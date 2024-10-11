@@ -2,12 +2,14 @@ import { storage } from "@/firebase";
 import { listAll, ref, getDownloadURL } from "firebase/storage";
 import Image from "next/image";
 import placeholder from "@/public/images/placeholder.svg";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import { Spinner } from "@nextui-org/react"
 
 
-export default function YachtImage(props) {
+export default function YachtImage({ name, imageH, imageW}) {
     const [urlLink, setUrlLink] = useState();
-      const name = props.name;  
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
       const fetchImage = async (name) => {
           const imagesRef = ref(storage, `/yachts/${name}/exterior`); // Reference to the images directory in Firebase Storage  
         try {
@@ -24,21 +26,35 @@ export default function YachtImage(props) {
             }else{
                 setUrlLink(placeholder);
             }
-            
+            setLoading(false)
         } catch (error) {
             console.error("Error fetching images", error);
+            setLoading(false)
         }
        };
-    fetchImage(name);
-    //setUrlLink(fetchedLink);
-    return (
+
+      fetchImage(name);
+
+    }, [name])
+
+    if (loading) {
+      return (
+        <div className="flex justify-center items-center h-screen">
+          <Spinner size="lg" />
+        </div>
+      )
+    }
+
+      return (
       <div>
             <Image
+            fallbackSrc="https://via.placeholder.com/300x200"
             src={urlLink}
             alt={`Image ${name}`}
-            width={600}
-            height={400}
-            className="w-full h-64 object-cover mb-4 rounded-md"
+            width={imageW}
+            height={imageH}
+            //className="w-full object-cover mb-4 rounded-md"
+            className="w-full object-cover"
             /> 
         </div>
     );

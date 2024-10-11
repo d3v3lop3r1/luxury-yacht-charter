@@ -13,11 +13,11 @@ export default function Destinations(){
                 {destData.map((destination) => (
                     <div key={destination.name} className="relative group overflow-hidden rounded-lg">
                     <Image
+                        className="w-full h-64 object-cover transition-transform group-hover:scale-110"
                         src={destination.image}
                         alt={destination.name}
                         width={400}
                         height={300}
-                        className="w-full h-64 object-cover transition-transform group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                         <h3 className="text-white text-2xl font-bold">{destination.name}</h3>

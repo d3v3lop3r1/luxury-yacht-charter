@@ -20,7 +20,7 @@ export default async function Yachts(){
                     <CardTitle>{yacht.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <YachtImage name={yacht.name}/>
+                    <YachtImage name={yacht.name}  imageW={400} imageH={400}/>
                     <div className="grid gap-auto grid-cols-4 border-solid border-gray-200 border-2 p-2 m-2 rounded text-xs font-bold ring-offset-2 ring">
                         <div className="text-gray-900 justify-center">
                             <p className="text-center">Cabins: {yacht.cabins}</p>

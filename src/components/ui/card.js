@@ -44,7 +44,7 @@ const CardFooter = ({ className, children }) => {
 
 const CardImage = ({ src, alt, className }) => {
   return (
-    <Image src={src} alt={alt} className={`w-full h-48 object-cover ${className}`} />
+    <Image src={src} alt={alt} className={`w-full object-cover ${className}`} />
   )
 }
 

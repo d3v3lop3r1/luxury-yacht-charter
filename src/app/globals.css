@@ -90,11 +90,11 @@ body {
 }
 .featured-yachts {
   padding: 40px 20px;
-  background-color: #788fb7;
+  background-color: #3a5b95;
 }
 
 .destinations {
-  background-color: #4e739d;
+  background-color: #274e90;
 }
 .featured-yachts-text{
   color: #ffffff;
@@ -117,4 +117,17 @@ footer {
   margin: 0 10px;
   color: white;
   text-decoration: none;
+}
+
+:root {
+  --color-50: #e3f2ff;
+  --color-100: #b6d4fe;
+  --color-200: #88b2f7;
+  --color-300: #5b8ff1;
+  --color-400: #2d69ec;
+  --color-500: #135cd2;
+  --color-600: #0b51a4;
+  --color-700: #054377;
+  --color-800: #002e4a;
+  --color-900: #00131e;
 }
