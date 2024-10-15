@@ -1,6 +1,8 @@
 import "@/app/globals.css"
 import destData from "@/public/destinations"
 import Image from "next/image"
+//import { Image } from "@nextui-org/react"
+
 
 
 

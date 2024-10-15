@@ -3,9 +3,9 @@ import { collection, getDocs } from 'firebase/firestore'
 import { firestore } from "@/firebase"
 // import { Anchor, Calendar, Globe, Phone } from "lucide-react"
 // import { burger } from '@lucide/lab';
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import YachtImage from "@/components/ui/yachtimage"
+import { Button } from "@nextui-org/button"
 
 export default async function Yachts(){    
     const yachtsCol = collection(firestore, 'yachts')
@@ -20,7 +20,7 @@ export default async function Yachts(){
                     <CardTitle>{yacht.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <YachtImage name={yacht.name}  imageW={400} imageH={400}/>
+                    <YachtImage name={yacht.name} imageW={400} imageH={400} className="w-full h-[400px] object-cover rounded-lg"/>
                     <div className="grid gap-auto grid-cols-4 border-solid border-gray-200 border-2 p-2 m-2 rounded text-xs font-bold ring-offset-2 ring">
                         <div className="text-gray-900 justify-center">
                             <p className="text-center">Cabins: {yacht.cabins}</p>
@@ -37,7 +37,7 @@ export default async function Yachts(){
                     </div>
                 </CardContent>
                 <CardFooter>
-                    <Button className="w-full">View Details</Button>
+                    <Button color="primary" size="lg" className="w-full" >View Details</Button>
                 </CardFooter>
             </Card>
             ))}

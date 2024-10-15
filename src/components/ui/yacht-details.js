@@ -1,10 +1,13 @@
-import { Card, CardBody, CardHeader, Divider, Image, Button, Tabs, Tab, Input, Textarea, Chip, Spinner } from "@nextui-org/react"
+import { Card, CardBody, CardHeader, Divider, Button, Tabs, Tab, Input, Textarea, Chip, Spinner } from "@nextui-org/react"
 import React, { useEffect, useState } from 'react'
 import firebaseConfig from '@/firebaseConfig';
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs } from 'firebase/firestore'
 import YachtImage from "@/components/ui/yachtimage"
 import placeholder from "@/public/images/placeholder.svg";
+import FormattedPrice from "@/components/ui/formattedprice"
+import Image from "next/image";
+
 
 
 // Initialize Firebase
@@ -49,7 +52,7 @@ const YachtDetails = (props) => {
         <Card className="mb-8 bg-white rounded-lg shadow-md overflow-hidden">
           <CardHeader className="flex justify-between items-center px-6 py-4">
             <h1 className="text-3xl font-bold text-gray-500 mb-2">{yacht.name}</h1>
-            <Chip className="text-blue-800" size="lg">{yacht.type}</Chip>
+            <Chip className="text-gray-600" size="lg">{yacht.model}</Chip>
           </CardHeader>
           <Divider className="my-4"/>
           <CardBody>
@@ -71,23 +74,23 @@ const YachtDetails = (props) => {
                 </div>
               </div>
               <div>
-                <p className="text-gray-600 mb-4">{yacht.description}</p>
+                <p className="text-gray-600 mb-4">{yacht.short_text}</p>
                 <div className="grid grid-cols-2 gap-4 mb-4 text-gray-600">
                   <div>
-                    <strong>Length:</strong> {yacht.length}
+                    <strong>Length:</strong> {yacht.length}m
                   </div>
                   <div>
-                    <strong>Capacity:</strong> {yacht.capacity}
+                    <strong>Capacity:</strong> {yacht.guests} person
                   </div>
                   <div>
                     <strong>Cabins:</strong> {yacht.cabins}
                   </div>
                   <div>
-                    <strong>Crew:</strong> {yacht.crew}
+                    <strong>Crew:</strong> {yacht.crew} person
                   </div>
                 </div>
                 <Button color="primary" size="lg" className="w-full">
-                  Book Now - ${yacht.price} per day
+                  Book Now - from <FormattedPrice price={yacht.price_from}> per day</FormattedPrice>
                 </Button>
               </div>
             </div>

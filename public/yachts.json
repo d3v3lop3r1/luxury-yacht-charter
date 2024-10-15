@@ -1,0 +1,5 @@
+[
+    { "name": "Ocean Breeze", "description": "80ft Luxury Sailing Yacht, 4 Cabins", "image": "/images/yacht1.jpg" },
+    { "name": "Royal Waves", "description": "100ft Motor Yacht, 5 Cabins", "image": "/images/yacht2.jpg" },
+    { "name": "Serenity", "description": "120ft Mega Yacht, 6 Cabins", "image": "/images/yacht3.jpg" }
+]

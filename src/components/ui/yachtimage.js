@@ -48,7 +48,6 @@ export default function YachtImage({ name, imageH, imageW}) {
       return (
       <div>
             <Image
-            fallbackSrc="https://via.placeholder.com/300x200"
             src={urlLink}
             alt={`Image ${name}`}
             width={imageW}

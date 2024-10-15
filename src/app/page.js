@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Anchor, Calendar, Globe, Phone } from "lucide-react"
 // import Link from "next/link"
-import Image from "next/image"
+import { Image } from "@nextui-org/react"
 import placeholder from "@/public/images/placeholder.svg"
 import "@/app/globals.css"
 import { Suspense } from "react"
@@ -29,7 +29,7 @@ export default function YachtCharterHome() {
             </Suspense>
           </div>
         </section>
-        
+
         <Destinations/>
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
