@@ -20,7 +20,7 @@ export default function YachtImage({ name, imageH, imageW}) {
               return url;
             })); 
         
-            const urlsLink = urls.at(1);
+            const urlsLink = urls.at(0);
             if(urlsLink){
                 setUrlLink(urlsLink); // Set the list of image URLs
             }else{

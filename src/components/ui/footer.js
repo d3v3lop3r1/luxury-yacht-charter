@@ -44,7 +44,7 @@ export default function Footer(){
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
-            <p>© 2024 Zlatna Luka Yachts. All rights reserved.</p>
+            <p>© 2024 Zlatna Luka Luxury Yachting. All rights reserved.</p>
           </div>
         </div>
       </footer>

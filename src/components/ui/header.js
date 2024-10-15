@@ -13,7 +13,7 @@ export default function Header(){
     <header className="header px-4 lg:px-6 h-20 flex items-center border-b">
         <Link className="flex items-center justify-center" href="#">
           <Image src={"/images/logo_transp.svg"} width={50} height={50} alt={"logo"}/>
-          <span className="ml-2 text-2xl font-bold text-primary">Zlatna Luka</span>
+          <span className="ml-2 text-2xl text-white">Zlatna Luka Luxury Yachting</span>
         </Link>
         <nav className="ml-auto flex items-center gap-4 sm:gap-6">
           <Link className={`${pathname === '/' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/">

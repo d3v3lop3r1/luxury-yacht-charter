@@ -6,11 +6,11 @@ import { useState,useEffect } from 'react';
 import { Spinner } from "@nextui-org/react"
 
 
-export default function YachtImages({ name, imageH, imageW}) {
-    const [urlLink, setUrlLink] = useState();
+export default function YachtImages({ name}) {
+    const [urlsLink, setUrlsLink] = useState();
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-      const fetchImage = async (name) => {
+      const fetchImages = async (name) => {
           const imagesRef = ref(storage, `/yachts/${name}/exterior`); // Reference to the images directory in Firebase Storage  
         try {
           const result = await listAll(imagesRef); // List all items in the images directory
@@ -20,10 +20,10 @@ export default function YachtImages({ name, imageH, imageW}) {
               return url;
             })); 
         
-            if(urlsLink){
-                setUrlLink(urlsLink); // Set the list of image URLs
+            if(urls){
+                setUrlsLink(urls); // Set the list of image URLs
             }else{
-                setUrlLink(placeholder);
+                setUrlsLink(placeholder);
             }
             setLoading(false)
         } catch (error) {
@@ -32,7 +32,7 @@ export default function YachtImages({ name, imageH, imageW}) {
         }
        };
 
-      fetchImage(name);
+      fetchImages(name);
 
     }, [name])
 
@@ -46,15 +46,18 @@ export default function YachtImages({ name, imageH, imageW}) {
     
 
       return (
-      <div>
+      <div className="grid grid-cols-4 gap-4 mt-4">
+        {urlsLink.map((url, index) => (    
             <Image
-            src={urlLink}
+            key={index}
+            src={url}
+            width={400}
+            height={400}
             alt={`Image ${name}`}
-            width={imageW}
-            height={imageH}
             //className="w-full object-cover mb-4 rounded-md"
             className="w-full object-cover"
             /> 
-        </div>
+          ))};
+      </div>
     );
   }

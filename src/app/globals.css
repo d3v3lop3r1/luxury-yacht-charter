@@ -83,6 +83,19 @@ body {
   color: white;
 }
 
+.hero-yacht {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
 .hero-text {
   position: absolute;
   bottom: 30px;

@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 import firebaseConfig from '@/firebaseConfig';
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import YachtImages from "@/components/ui/yachtimages"
 import YachtImage from "@/components/ui/yachtimage"
-import placeholder from "@/public/images/placeholder.svg";
+//import placeholder from "@/public/images/placeholder.svg";
 import FormattedPrice from "@/components/ui/formattedprice"
-import Image from "next/image";
+//import Image from "next/image";
 
 
 
@@ -52,7 +53,7 @@ const YachtDetails = (props) => {
         <Card className="mb-8 bg-white rounded-lg shadow-md overflow-hidden">
           <CardHeader className="flex justify-between items-center px-6 py-4">
             <h1 className="text-3xl font-bold text-gray-500 mb-2">{yacht.name}</h1>
-            <Chip className="text-gray-600" size="lg">{yacht.model}</Chip>
+            <Chip color="primary" size="lg">{yacht.model}</Chip>
           </CardHeader>
           <Divider className="my-4"/>
           <CardBody>
@@ -64,12 +65,10 @@ const YachtDetails = (props) => {
                   imageH={400}
                   className="w-full h-[400px] object-cover rounded-lg"
                 />
-                <div className="grid grid-cols-3 gap-4 mt-4">
-                    <Image
-                      key={yacht.id}
-                      src={placeholder}
-                      alt={yacht.name} 
-                      className="w-full h-32 object-cover rounded-lg"
+                <div>
+                    <YachtImages
+                      name={yacht.name}
+                      className="h-32 object-cover rounded-lg"
                     />
                 </div>
               </div>
@@ -89,27 +88,55 @@ const YachtDetails = (props) => {
                     <strong>Crew:</strong> {yacht.crew} person
                   </div>
                 </div>
+                <p className="text-gray-600 mb-4">{yacht.long_text}</p>
+                <div className="grid grid-cols-2 gap-4 mb-4 justify-center justify-items-center">
+                  <Chip className="text-l font-bold p-2" color="secondary">Low season price: <FormattedPrice price={yacht.low_season_price}/> per day</Chip>
+                  <Chip className="text-l font-bold p-2" color="secondary">High season price: <FormattedPrice price={yacht.high_season_price}/> per day</Chip>
+                </div>
                 <Button color="primary" size="lg" className="w-full">
-                  Book Now - from <FormattedPrice price={yacht.price_from}> per day</FormattedPrice>
+                  Book Now - from <FormattedPrice price={yacht.price_from}/> per day
                 </Button>
               </div>
             </div>
           </CardBody>
+          
         </Card>
 
         <Tabs aria-label="Yacht Details">
           <Tab key="amenities" title="Amenities">
             <Card>
               <CardBody>
-                <h2 className="text-2xl font-bold mb-4">Onboard Amenities</h2>
-                <ul className="grid grid-cols-2 gap-4">
-                  {yacht.amenities}
-                    <li key={yacht.id} className="flex items-center">
-                      <svg className="w-6 h-6 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {yacht.amenities}
-                    </li>
+                <h2 className="text-2xl font-bold mb-4 text-gray-400">Onboard Amenities</h2>
+                <ul className="grid grid-cols-2 gap-4 text-gray-600">
+                  {(yacht.amenities.split(",")).map((amenitie, index)=>{
+                    return(
+                      <li key={index} className="flex items-center">
+                        <svg className="w-6 h-6 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {amenitie}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </CardBody>
+            </Card>
+          </Tab>
+          <Tab key="genInfos" title="General Infos">
+            <Card>
+              <CardBody>
+                <h2 className="text-2xl font-bold mb-4 text-gray-400">General Infos</h2>
+                <ul className="grid grid-cols-2 gap-4 text-gray-600">
+                  {(yacht.general_infos.split(",")).map((info, index)=>{
+                    return(
+                      <li key={index} className="flex items-center">
+                        <svg className="w-6 h-6 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {info}
+                      </li>
+                    )
+                  })}
                 </ul>
               </CardBody>
             </Card>
@@ -117,8 +144,8 @@ const YachtDetails = (props) => {
           <Tab key="destinations" title="Destinations">
             <Card>
               <CardBody>
-                <h2 className="text-2xl font-bold mb-4">Popular Destinations</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <h2 className="text-2xl font-bold mb-4 text-gray-400">Popular Destinations</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-600">
                   {yacht.homeport}
                     <Card key={yacht.id} className="text-center">
                       <CardBody>
@@ -138,7 +165,7 @@ const YachtDetails = (props) => {
           <Tab key="booking" title="Booking">
             <Card>
               <CardBody>
-                <h2 className="text-2xl font-bold mb-4">Book Your Charter</h2>
+                <h2 className="text-2xl font-bold mb-4 text-gray-400">Book Your Charter</h2>
                 <form className="space-y-4">
                   <Input
                     label="Full Name"
