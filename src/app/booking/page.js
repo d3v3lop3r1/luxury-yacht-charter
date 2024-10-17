@@ -11,12 +11,8 @@ import {
   Divider
 } from "@nextui-org/react"
 import { CalendarIcon } from '@heroicons/react/24/outline'
+import getYachts from "@/components/api/getYachts"
 
-const yachts = [
-  { id: '1', name: 'Ocean Breeze', type: 'Sailing Yacht', capacity: 8, price: 5000 },
-  { id: '2', name: 'Sea Princess', type: 'Motor Yacht', capacity: 12, price: 8000 },
-  { id: '3', name: 'Wind Dancer', type: 'Catamaran', capacity: 10, price: 6000 },
-]
 
 const BookingPage = () => {
   const [selectedYacht, setSelectedYacht] = useState('')
