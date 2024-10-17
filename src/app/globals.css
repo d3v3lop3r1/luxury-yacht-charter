@@ -27,10 +27,16 @@ body {
   }
 }
 
+.zlogo{
+  width: 50;
+  height: 50;
+}
+
+
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
   background-color: #0b3d91;
   color: white;
 }
@@ -60,6 +66,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: center;
+  background-position-x: center;
+
   height: 600px;
   display: flex;
   flex-direction: column;
@@ -103,8 +111,11 @@ body {
   left: 50px;
 }
 .featured-yachts {
-  padding: 40px 20px;
   background-color: #3a5b95;
+}
+
+.booking-page{
+  background-image: url("/images/ocean-water.jpg") ;
 }
 
 .destinations {

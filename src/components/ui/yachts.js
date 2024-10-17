@@ -5,7 +5,7 @@ import { firestore } from "@/firebase"
 // import { burger } from '@lucide/lab';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import YachtImage from "@/components/ui/yachtimage"
-import { Button } from "@nextui-org/button"
+import { Button, Link } from "@nextui-org/react"
 
 export default async function Yachts(){    
     const yachtsCol = collection(firestore, 'yachts')
@@ -15,7 +15,7 @@ export default async function Yachts(){
     <div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {data.map((yacht) => (
-            <Card key={yacht.id}>
+            <Card key={yacht.id} className="overflow-hidden">
                 <CardHeader>
                     <CardTitle>{yacht.name}</CardTitle>
                 </CardHeader>
@@ -37,7 +37,7 @@ export default async function Yachts(){
                     </div>
                 </CardContent>
                 <CardFooter>
-                    <Button color="primary" size="lg" className="w-full" >View Details</Button>
+                    <Button color="primary" size="lg" className="w-full" as={Link} href={`/yachts/${yacht.id}`} >View Details</Button>
                 </CardFooter>
             </Card>
             ))}

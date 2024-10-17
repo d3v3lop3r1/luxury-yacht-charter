@@ -49,7 +49,7 @@ const YachtDetails = (props) => {
 
   return (
     <div className="grid gap-2 md:grid-cols-1 lg:grid-cols-1">
-      <div className="container mx-auto px-4 py-8">
+      <div>
         <Card className="mb-8 bg-white rounded-lg shadow-md overflow-hidden">
           <CardHeader className="flex justify-between items-center px-6 py-4">
             <h1 className="text-3xl font-bold text-gray-500 mb-2">{yacht.name}</h1>
@@ -138,27 +138,6 @@ const YachtDetails = (props) => {
                     )
                   })}
                 </ul>
-              </CardBody>
-            </Card>
-          </Tab>
-          <Tab key="destinations" title="Destinations">
-            <Card>
-              <CardBody>
-                <h2 className="text-2xl font-bold mb-4 text-gray-400">Popular Destinations</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-600">
-                  {yacht.homeport}
-                    <Card key={yacht.id} className="text-center">
-                      <CardBody>
-                        <svg className="w-12 h-12 mx-auto mb-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <h3 className="font-semibold">{yacht.homeport}</h3>
-                        <p className="text-sm text-gray-600">Explore the beauty of {yacht.homeport}</p>
-                      </CardBody>
-                    </Card>
-                
-                </div>
               </CardBody>
             </Card>
           </Tab>

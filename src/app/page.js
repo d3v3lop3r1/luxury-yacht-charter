@@ -14,6 +14,7 @@ import Destinations from "../components/ui/destinations"
 
 export default function YachtCharterHome() {
   return (
+    //<div className="flex flex-col min-h-screen">
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         <Hero 
@@ -23,7 +24,7 @@ export default function YachtCharterHome() {
           />
 
         <section className="featured-yachts w-full py-12 md:py-24 lg:py-32 bg-gray-200">
-          <div className="container px-4 md:px-6">
+          <div className="px-4 md:px-6">
             <h2 className="featured-yachts-text text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Our Exclusive Yacht Collection</h2>
             <Suspense fallback={<h2>Loading...</h2>}>
               <Yachts shortText={true} detailsBtn={false}/>
@@ -34,7 +35,7 @@ export default function YachtCharterHome() {
         <Destinations/>
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
-          <div className="container px-4 md:px-6">
+          <div className="px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Why Choose Our Charter Services?</h2>
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 {[
@@ -53,7 +54,7 @@ export default function YachtCharterHome() {
           </div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-500">
-          <div className="container px-4 md:px-6">
+          <div className="px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">What Our Clients Say</h2>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {[
@@ -81,7 +82,7 @@ export default function YachtCharterHome() {
           </div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-blue-900 text-primary-foreground">
-          <div className="container px-4 md:px-6">
+          <div className="px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready for Your Next Adventure?</h2>
               <p className="mx-auto max-w-[600px] text-primary-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">

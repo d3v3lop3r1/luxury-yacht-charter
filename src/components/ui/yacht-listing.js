@@ -54,14 +54,14 @@ const YachtListing = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center">
         <Spinner size="lg" />
       </div>
     )
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentYachts.map((yacht) => (
           <Card key={yacht.id} className="w-full bg-white rounded-lg shadow-md overflow-hidden p-2">

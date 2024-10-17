@@ -46,7 +46,7 @@ const BookingPage = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container booking-page mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-center">Book Your Luxury Yacht Charter</h1>
       <Card className="max-w-3xl mx-auto">
         <CardHeader className="flex justify-center">

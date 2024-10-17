@@ -23,7 +23,7 @@ export default async function YachtsPage({params}){
             smallText = "Review the specifications and amenities of our yacht."/>
         {/* Add your yacht grid here */}
         <section className="featured-yachts w-full py-12 md:py-24 lg:py-32 bg-gray-200">
-            <div className="container px-4 md:px-6">
+            <div className="px-4 md:px-6">
                 <Suspense fallback={<h2>Loading...</h2>}>
                     <YachtDetails id = {id}/>
                 </Suspense>

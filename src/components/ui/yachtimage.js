@@ -39,7 +39,7 @@ export default function YachtImage({ name, imageH, imageW}) {
 
     if (loading) {
       return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center">
           <Spinner size="lg" />
         </div>
       )
