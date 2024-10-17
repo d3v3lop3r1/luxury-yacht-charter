@@ -6,7 +6,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore'
 import YachtImages from "@/components/ui/yachtimages"
 import YachtImage from "@/components/ui/yachtimage"
 //import placeholder from "@/public/images/placeholder.svg";
-import FormattedPrice from "@/components/ui/formattedprice"
+import FormattedPrice from "@/components/ui/FormattedPrice"
 //import Image from "next/image";
 
 
