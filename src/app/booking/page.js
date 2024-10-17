@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
+import {Card, CardHeader, CardBody} from "@nextui-org/card";
 import { 
   Input,
   Select,
