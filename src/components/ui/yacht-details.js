@@ -74,7 +74,7 @@ const YachtDetails = (props) => {
               </div>
               <div>
                 <p className="text-gray-600 mb-4">{yacht.short_text}</p>
-                <div className="grid grid-cols-2 gap-4 mb-4 text-gray-600">
+                <div className="grid grid-cols-2 gap-4 mb-4 text-gray-600 shadow-lg p-5">
                   <div>
                     <strong>Length:</strong> {yacht.length}m
                   </div>
@@ -102,7 +102,7 @@ const YachtDetails = (props) => {
           
         </Card>
 
-        <Tabs aria-label="Yacht Details">
+        <Tabs color="primary" aria-label="Yacht Details">
           <Tab key="amenities" title="Amenities">
             <Card>
               <CardBody>

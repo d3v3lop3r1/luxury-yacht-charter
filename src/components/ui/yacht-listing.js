@@ -62,7 +62,6 @@ const YachtListing = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Our Luxury Yacht Fleet</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentYachts.map((yacht) => (
           <Card key={yacht.id} className="w-full bg-white rounded-lg shadow-md overflow-hidden p-2">
@@ -79,7 +78,7 @@ const YachtListing = () => {
               <div className="flex justify-between w-full items-center">
                 <span className="text-l text-gray-700">
                     <FormattedPrice price = {yacht.price_from}></FormattedPrice> / day</span>
-                <Button className='text-blue-500' size='lg' as={Link} href={`/yachts/${yacht.id}`}>
+                <Button color='primary' size='lg' as={Link} href={`/yachts/${yacht.id}`}>
                   View Details
                 </Button>
               </div>

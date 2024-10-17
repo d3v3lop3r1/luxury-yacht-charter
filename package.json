@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
     "@lucide/lab": "^0.1.2",
     "@nextui-org/button": "^2.0.38",
     "@nextui-org/calendar": "^2.0.12",

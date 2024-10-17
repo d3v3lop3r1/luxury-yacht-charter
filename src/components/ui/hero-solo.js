@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import "@/app/globals.css"
 
-export default function Hero({style, mainText, smallText}){
+export default function Hero({style, mainText, smallText, bg}){
     return (
-        <section className={style} >
+        <section className={style} style={{backgroundImage: `url(${bg})`}} >
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">

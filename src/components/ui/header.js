@@ -1,7 +1,7 @@
 'use client'
 import { usePathname } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { Button } from "@nextui-org/button"
+import {Link} from "@nextui-org/link"
 //import Image from "next/image";
 import { Image } from "@nextui-org/image"
 import "@/app/globals.css"
@@ -16,25 +16,25 @@ export default function Header(){
           <span className="ml-2 text-2xl text-white">Zlatna Luka Luxury Yachting</span>
         </Link>
         <nav className="ml-auto flex items-center gap-4 sm:gap-6">
-          <Link className={`${pathname === '/' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/">
+          <Link color='foreground' className={`${pathname === '/' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/">
             Home
           </Link>
-          <Link className={`${pathname === '/yachts' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/yachts">
+          <Link color='foreground' className={`${pathname === '/yachts' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/yachts">
             Yacht Fleet
           </Link>
-          <Link className={`${pathname === '/destinations' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/destinations">
+          <Link color='foreground' className={`${pathname === '/destinations' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/destinations">
             Destinations
           </Link>
-          <Link className={`${pathname === '/charters' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/charters">
+          <Link color='foreground' className={`${pathname === '/charters' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/charters">
             Charter Packages
           </Link>
-          <Link className={`${pathname === '/about-us' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/about-us">
+          <Link color='foreground' className={`${pathname === '/about-us' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/about-us">
             About Us
           </Link>
-          <Link className={`${pathname === '/contact' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/contact">
+          <Link color='foreground' className={`${pathname === '/contact' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/contact">
             Contact
           </Link>
-          <Button>Book Now</Button>
+          <Button color='primary' as={Link} href={"/booking"}>Book Now</Button>
         </nav>
     </header>
 

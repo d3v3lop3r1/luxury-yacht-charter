@@ -4,7 +4,7 @@ import Image from "next/image"
 
 const Card = ({ className, children }) => {
   return (
-    <div className={`bg-white rounded-lg shadow-md overflow-hidden ${className}`}>
+    <div className={`bg-white rounded-lg shadow-lg overflow-hidden ${className}`}>
       {children}
     </div>
   )

@@ -74,6 +74,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: center;
+  background-position-x: center;
   height: 400px;
   display: flex;
   flex-direction: column;
