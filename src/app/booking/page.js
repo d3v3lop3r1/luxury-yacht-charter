@@ -11,19 +11,27 @@ import {
   Divider
 } from "@nextui-org/react"
 import { CalendarIcon } from '@heroicons/react/24/outline'
-import getYachts from "@/components/api/getYachts"
+//import getYachts from "@/components/api/getYachts"
 
-
-const BookingPage = () => {
+const yachts = [
+  { id: '1', name: 'Ocean Breeze', type: 'Sailing Yacht', capacity: 8, price: 5000 },
+  { id: '2', name: 'Sea Princess', type: 'Motor Yacht', capacity: 12, price: 8000 },
+  { id: '3', name: 'Wind Dancer', type: 'Catamaran', capacity: 10, price: 6000 },
+]
+export default function BookingPage() {
   const [selectedYacht, setSelectedYacht] = useState('')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
-  const [guests, setGuests] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [specialRequests, setSpecialRequests] = useState('')
   const [agreeTerms, setAgreeTerms] = useState(false)
+  //const [yachts, setYachts] = useState('')
+  
+  // const yachts = getYachts();
+  // //setYachts (getYachts) ;
+  // console.log(yachts)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -34,36 +42,31 @@ const BookingPage = () => {
     // You could also add validation here before submitting
   }
 
-  const calculateTotalPrice = () => {
-    const yacht = yachts.find(y => y.id === selectedYacht)
-    if (!yacht || !startDate || !endDate) return 0
-    const days = (new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24)
-    return yacht.price * days
-  }
 
   return (
-    <div className="container booking-page mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Book Your Luxury Yacht Charter</h1>
+    <div className="booking-page mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold mb-8 text-center">Book Your Luxury Yacht</h1>
       <Card className="max-w-3xl mx-auto">
         <CardHeader className="flex justify-center">
-          <h2 className="text-2xl font-semibold">Booking Details</h2>
+          <h2 className="text-2xl font-semibold text-default-400">Booking Details</h2>
         </CardHeader>
         <CardBody>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 text-gray-600">
             <Select 
               label="Select Yacht" 
               placeholder="Choose a yacht"
               value={selectedYacht}
               onChange={(e) => setSelectedYacht(e.target.value)}
             >
-              {yachts.map((yacht) => (
-                <SelectItem key={yacht.id} textValue={yacht.id}>
+              {yachts.map((yacht) => {
+                return (
+                  <SelectItem key={yacht.id} textValue={yacht.id}>
                   {yacht.name} - {yacht.type} (Capacity: {yacht.capacity})
-                </SelectItem>
-              ))}
+                </SelectItem>)
+              })}
             </Select>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-600">
               <Input
                 type="date"
                 label="Start Date"
@@ -82,13 +85,6 @@ const BookingPage = () => {
               />
             </div>
 
-            <Input
-              type="number"
-              label="Number of Guests"
-              placeholder="Enter number of guests"
-              value={guests}
-              onChange={(e) => setGuests(e.target.value)}
-            />
 
             <Divider />
 
@@ -126,11 +122,10 @@ const BookingPage = () => {
               isSelected={agreeTerms}
               onValueChange={setAgreeTerms}
             >
-              I agree to the terms and conditions
+              <span className='text-blue-600'>I agree to the terms and conditions</span>
             </Checkbox>
 
             <div className="text-right">
-              <p className="text-xl font-bold mb-2">Total Price: ${calculateTotalPrice()}</p>
               <Button color="primary" type="submit" size="lg">
                 Submit Booking Request
               </Button>
@@ -141,5 +136,3 @@ const BookingPage = () => {
     </div>
   )
 }
-
-export default BookingPage

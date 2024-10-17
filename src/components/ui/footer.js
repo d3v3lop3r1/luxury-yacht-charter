@@ -22,17 +22,15 @@ export default function Footer(){
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="#" className="hover:text-white">Yacht Fleet</Link></li>
-                <li><Link href="#" className="hover:text-white">Destinations</Link></li>
-                <li><Link href="#" className="hover:text-white">Charter Packages</Link></li>
-                <li><Link href="#" className="hover:text-white">Contact Us</Link></li>
+                <li><Link href="/yachts" className="hover:text-white">Yacht Fleet</Link></li>
+                <li><Link href="/contact" className="hover:text-white">Contact Us</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center"><Phone className="h-4 w-4 mr-2" /> +386 (555) 123-4567</li>
-                <li className="flex items-center"><MapPin className="h-4 w-4 mr-2" /> 123 Marina Blvd, Luxury Port, Serbia</li>
+                <li className="flex items-center"><MapPin className="h-4 w-4 mr-2" /> 123 Marina Blvd, Luxury Port, Croatia</li>
               </ul>
             </div>
             <div><br/>
