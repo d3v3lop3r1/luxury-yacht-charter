@@ -29,8 +29,8 @@ export default function Footer(){
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <ul className="space-y-2 text-sm">
-                <li className="flex items-center"><Phone className="h-4 w-4 mr-2" /> +386 (555) 123-4567</li>
-                <li className="flex items-center"><MapPin className="h-4 w-4 mr-2" /> 123 Marina Blvd, Luxury Port, Croatia</li>
+                <li className="flex items-center"><Phone className="h-4 w-4 mr-2" /> +381 (659) 708-303</li>
+                <li className="flex items-center"><MapPin className="h-4 w-4 mr-2" /> Marka Oreškovića 3, Palić 458403, Subotica</li>
               </ul>
             </div>
             <div><br/>

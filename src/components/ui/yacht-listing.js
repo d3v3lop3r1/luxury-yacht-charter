@@ -24,7 +24,7 @@ const YachtListing = () => {
   const [yachts, setYachts] = useState([])
   const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
-  const yachtsPerPage = 6
+  const yachtsPerPage = 12
 
   useEffect(() => {
     const fetchYachts = async () => {

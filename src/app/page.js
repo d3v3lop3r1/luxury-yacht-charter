@@ -1,15 +1,13 @@
 'use client'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Anchor, Calendar, Globe, Phone } from "lucide-react"
 // import Link from "next/link"
-import { Image } from "@nextui-org/react"
-import placeholder from "@/public/images/placeholder.svg"
 import "@/app/globals.css"
 import { Suspense } from "react"
-import Yachts from "@/components/ui/yachts"
+import Yachts from "@/components/ui/yacht-listing"
 import Hero from "../components/ui/hero"
 import Destinations from "../components/ui/destinations"
+import {Link, Button} from "@nextui-org/react";
+
 
 
 export default function YachtCharterHome() {
@@ -53,34 +51,6 @@ export default function YachtCharterHome() {
               </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-500">
-          <div className="px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">What Our Clients Say</h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { name: "Emma Thompson", review: "An unforgettable experience! The yacht was stunning and the crew was exceptional.", image: placeholder },
-                { name: "Michael Chen", review: "Impeccable service from start to finish. We'll definitely be booking again!", image: placeholder },
-                { name: "Sophia Rodriguez", review: "The destinations were breathtaking. It was truly a journey of a lifetime.", image: placeholder },
-              ].map((testimonial) => (
-                <Card key={testimonial.name} className="text-center">
-                  <CardHeader>
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      width={100}
-                      height={100}
-                      className="rounded-full mx-auto mb-4"
-                    />
-                    <CardTitle>{testimonial.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-500">{testimonial.review}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-blue-900 text-primary-foreground">
           <div className="px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
@@ -88,7 +58,7 @@ export default function YachtCharterHome() {
               <p className="mx-auto max-w-[600px] text-primary-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Let us help you plan the perfect yacht charter experience.
               </p>
-              <Button sizes="lg" variants="primary" className="hover:bg-white/50">
+              <Button sizes="lg" color="primary" className="hover:bg-white/50" as={Link} href={"/booking"}>
                 Request a Quote
               </Button>
             </div>

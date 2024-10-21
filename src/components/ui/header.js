@@ -21,7 +21,7 @@ export default function Header(){
           />
           <NavbarBrand>
             <ZlLogo className="zlogo"/>
-            <p className="font-bold text-inherit ml-4">Zlata Luka</p>
+            <p className="font-bold text-inherit ml-4">Zlatna Luka<br/>Luxury Yachting</p>
           </NavbarBrand>
         </NavbarContent>
 

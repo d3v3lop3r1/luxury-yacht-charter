@@ -24,7 +24,7 @@ const ContactPage = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className=" contact-us container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-center">Contact Us</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -71,7 +71,7 @@ const ContactPage = () => {
             <div className="space-y-4">
               <div className="flex items-center text-gray-600">
                 <PhoneIcon className="w-6 h-6 mr-2 text-blue-500" />
-                <p>+386 (555) 123-4567</p>
+                <p>+381 (659) 708-303</p>
               </div>
               <div className="flex items-center text-gray-600">
                 <EnvelopeIcon className="w-6 h-6 mr-2 text-blue-500" />
@@ -79,7 +79,7 @@ const ContactPage = () => {
               </div>
               <div className="flex items-center text-gray-600">
                 <MapPinIcon className="w-6 h-6 mr-2 text-blue-500" />
-                <p>123 Marina Blvd, Luxury Port, Croatia</p>
+                <p>Marka Oreškovića 3, Palić 458403, Subotica</p>
               </div>
             </div>
 
@@ -97,7 +97,7 @@ const ContactPage = () => {
             <div className='text-gray-600'>
               <h3 className="text-xl font-semibold mb-2">Emergency Contact</h3>
               <p>For urgent matters outside of office hours:</p>
-              <p>Emergency Hotline: +386 (555) 123-4567</p>
+              <p>Emergency Hotline: +381 (659) 708-303</p>
             </div>
           </CardBody>
         </Card>
@@ -108,7 +108,7 @@ const ContactPage = () => {
           <h2 className="text-2xl font-semibold mb-4">Visit Our Office</h2>
           <div className="aspect-w-16 aspect-h-9">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93911.81974542087!2d17.938155624918984!3d42.6455790194156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134b8ba20835e87d%3A0x400ad50862bd500!2zRHVicm92bmlrLCBIb3J2w6F0b3JzesOhZw!5e0!3m2!1shu!2suk!4v1729183515321!5m2!1shu!2suk" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d204288.90168410135!2d19.50129606034412!3d46.17453974193813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4743618eaa0b1717%3A0xac7ebb066c4dc72f!2zTWFya2EgT3JlxaFrb3ZpxIdhIDMsIFBhbGnEhyA0NTg0MDMsIFN6ZXJiaWE!5e0!3m2!1shu!2suk!4v1729546036884!5m2!1shu!2suk" 
               width="100%" 
               height="450" 
               style={{ border: 0 }} 

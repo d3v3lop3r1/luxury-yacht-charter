@@ -115,7 +115,11 @@ body {
 }
 
 .booking-page{
-  background-image: url("/images/ocean-water.jpg") ;
+  background-color: #135cd2;
+}
+
+.contact-us{
+  background-color: #135cd2;
 }
 
 .destinations {
