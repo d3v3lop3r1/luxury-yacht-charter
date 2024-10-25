@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button"
+'use client'
+//import { Button } from "@/components/ui/button"
 import { MapPin, Phone } from "lucide-react"
-import { Input } from "@/components/ui/input"
+//import { Input } from "@/components/ui/input"
 
 import Link from "next/link"
 import "@/app/globals.css"
+import SubscribePage from "./subscribe-page"
 
 export default function Footer(){
     return (
@@ -33,12 +35,8 @@ export default function Footer(){
                 <li className="flex items-center"><MapPin className="h-4 w-4 mr-2" /> Marka Oreškovića 3, Palić 458403, Subotica</li>
               </ul>
             </div>
-            <div><br/>
-              <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-              <form className="space-y-2">
-                <Input className="bg-gray-800 border-gray-700" placeholder="Enter your email" type="email" />
-                <Button className="w-full">Subscribe</Button>
-              </form>
+            <div>
+              <SubscribePage/>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
