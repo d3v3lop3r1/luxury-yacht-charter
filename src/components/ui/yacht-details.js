@@ -90,11 +90,11 @@ const YachtDetails = (props) => {
                 </div>
                 <p className="text-gray-600 mb-4">{yacht.long_text}</p>
                 <div className="grid grid-cols-2 gap-4 mb-4 justify-center justify-items-center">
-                  <Chip className="text-l font-bold p-2" color="secondary">Low season price: <FormattedPrice price={yacht.low_season_price}/> per day</Chip>
-                  <Chip className="text-l font-bold p-2" color="secondary">High season price: <FormattedPrice price={yacht.high_season_price}/> per day</Chip>
+                  <Chip className="text-l font-bold p-2" color="secondary">Low season price: <FormattedPrice price={yacht.low_season_price}/></Chip>
+                  <Chip className="text-l font-bold p-2" color="secondary">High season price: <FormattedPrice price={yacht.high_season_price}/></Chip>
                 </div>
                 <Button color="primary" size="lg" className="w-full">
-                  Book Now - from <FormattedPrice price={yacht.price_from}/> per day
+                  Book Now - from <FormattedPrice price={yacht.price_from}/>
                 </Button>
               </div>
             </div>

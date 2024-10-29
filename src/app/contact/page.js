@@ -1,68 +1,21 @@
 'use client'
-import React, { useState } from 'react'
 import { 
   Card, 
   CardBody, 
   CardHeader,
-  Input,
-  Textarea,
-  Button,
   Divider
 } from "@nextui-org/react"
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline'
+import EmailForm from "@/components/ui/email-form"
+
 
 const ContactPage = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', { name, email, message })
-    // You could also add validation here before submitting
-  }
 
   return (
     <div className=" contact-us container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-center">Contact Us</h1>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card>
-          <CardHeader>
-            <h2 className="text-2xl font-semibold text-gray-600">Send Us a Message</h2>
-          </CardHeader>
-          <CardBody>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <Input
-                label="Name"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <Input
-                label="Email"
-                placeholder="Enter your email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <Textarea
-                label="Message"
-                placeholder="How can we help you?"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                required
-              />
-              <Button color="primary" type="submit">
-                Send Message
-              </Button>
-            </form>
-          </CardBody>
-        </Card>
-
+      <EmailForm/>
         <Card>
           <CardHeader>
             <h2 className="text-2xl font-semibold text-gray-600">Contact Information</h2>

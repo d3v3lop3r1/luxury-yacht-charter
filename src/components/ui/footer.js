@@ -5,7 +5,7 @@ import { MapPin, Phone } from "lucide-react"
 
 import Link from "next/link"
 import "@/app/globals.css"
-import SubscribePage from "./subscribe-page"
+import SubscriptionForm from "@/components/ui/subscription-form"
 
 export default function Footer(){
     return (
@@ -36,7 +36,7 @@ export default function Footer(){
               </ul>
             </div>
             <div>
-              <SubscribePage/>
+              <SubscriptionForm/>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
