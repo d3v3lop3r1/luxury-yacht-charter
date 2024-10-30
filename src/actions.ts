@@ -19,7 +19,8 @@ export const sendEmail = async (prevState: State, formData: FormData) => {
     await resend.emails.send({
       from: "Zlatna Luka <support@zlatnaluka.rs>",
       to: email,
-      subject: "You sent a message to Zlatna Luka Luxury Yachting",
+      bcc: "info@zlatnaluka.rs",
+      subject: "Message to Zlatna Luka Luxury Yachting",
       react: EmailTemplate({ name, email, message })
     })
     return {
@@ -50,7 +51,8 @@ export const sendBooking = async (prevState: State, formData: FormData) => {
     await resend.emails.send({
       from: "Zlatna Luka <support@zlatnaluka.rs>",
       to: email,
-      subject: "Booking from site",
+      bcc: "info@zlatnaluka.rs",
+      subject: "Booking request from site",
       react: BookingTemplate({ yacht, startdate, enddate, name, email, phone, request })
     })
     console.log(name)

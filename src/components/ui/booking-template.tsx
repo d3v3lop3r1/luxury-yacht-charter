@@ -18,8 +18,8 @@ const BookingTemplate = ({
 }) => {
   return (
     <Html lang="en">
-      <Heading as="h1">New Booking</Heading>
-      <Text>Submitted a booking form. Here are the details:</Text>
+      <Heading as="h1">Booking request</Heading>
+      <Text>You just submitted a booking form. Here are the details:</Text>
       <Text>Yacht: {yacht}</Text>
       <Text>Start Date: {startdate}</Text>
       <Text>End Date: {enddate}</Text>

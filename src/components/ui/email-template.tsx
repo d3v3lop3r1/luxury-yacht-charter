@@ -10,7 +10,7 @@ const EmailTemplate = ({
 }) => {
   return (
     <Html lang="en">
-      <Heading as="h1">New Message</Heading>
+      <Heading as="h1">Message to Zlatna Luka Luxury Yachting</Heading>
       <Text>You just submitted a message. Here are the details:</Text>
       <Text>Name: {name}</Text>
       <Text>Email: {email}</Text>
