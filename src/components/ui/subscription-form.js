@@ -2,6 +2,8 @@
 import { sendSubscription } from "@/actions"
 import { useEffect } from "react"
 import { useFormState } from "react-dom"
+import { Toaster, toaster } from "@/components/ui/toaster"
+
 import { 
     Card, 
     CardBody, 
@@ -20,10 +22,17 @@ export default function SubscriptionForm() {
   })
   useEffect(() => {
     if (sendSubscriptionState.success) {
-      alert("Subscrition sent!")
+      toaster.create({
+        title: "Subscription was successfull",
+        type: "success"
+      })
+      document.getElementById("subscriptionForm").reset();
     }
     if (sendSubscriptionState.error) {
-      alert("Error sending subscrition!")
+      toaster.create({
+        title: "Subscription was failed",
+        type: "error"
+      })
     }
   }, [sendSubscriptionState])
   return (
@@ -36,7 +45,8 @@ export default function SubscriptionForm() {
                 <p className="text-md text-gray-700">Stay Updated</p>
             </CardHeader>
             <CardBody>
-                <form action={sendSubscriptionAction} className="space-y-1">
+              <Toaster />
+                <form action={sendSubscriptionAction} className="space-y-1" id="subscriptionForm">
                     <Input type="email" label="Email" id="email" name="email" />
                     <Button color="primary" type="submit">Send</Button>
                 </form>

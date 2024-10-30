@@ -1,6 +1,8 @@
 import { sendBooking } from "@/actions"
 import { useEffect } from "react"
 import { useFormState } from "react-dom"
+import { useForm, Form } from "react-hook-form";
+import { Toaster, toaster } from "@/components/ui/toaster"
 import { 
     Input,
     Select,
@@ -11,7 +13,8 @@ import {
     Card, 
     CardBody, 
     CardHeader,
-    SelectItem
+    SelectItem,
+    Spinner
   } from "@nextui-org/react"
   
 import { EnvelopeIcon, CalendarIcon, PhoneIcon } from '@heroicons/react/24/outline'
@@ -20,18 +23,13 @@ import firebaseConfig from '@/firebaseConfig';
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs } from 'firebase/firestore'
 
-//import yachts from "@/components/api/db.json"
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
-
-// const yachts = [
-//     { id: '1', name: 'Ocean Breeze', type: 'Sailing Yacht', capacity: 8, price: 5000 },
-//     { id: '2', name: 'Sea Princess', type: 'Motor Yacht', capacity: 12, price: 8000 },
-//     { id: '3', name: 'Wind Dancer', type: 'Catamaran', capacity: 10, price: 6000 },
-//   ]
   
 export default function BookingForm() {
+  const { register, control, formState: { errors } } = useForm();
+
   const [selectedYacht, setSelectedYacht] = useState('')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
@@ -49,10 +47,25 @@ export default function BookingForm() {
   })
   useEffect(() => {
     if (sendBookingState.success) {
-      alert("Booking request sent!")
+      toaster.create({
+        title: "Booking request sent successfully",
+        type: "success"
+      })
+      setSelectedYacht('')
+      setStartDate('')
+      setEndDate('')
+      setName('')
+      setEmail('')
+      setPhone('')
+      setSpecialRequests('')
+      setAgreeTerms(false)
+
     }
     if (sendBookingState.error) {
-      alert("Error sending booking request!")
+      toaster.create({
+        title: "Booking request sending fail",
+        type: "error"
+      })
     }
   }, [sendBookingState])
 
@@ -65,8 +78,12 @@ export default function BookingForm() {
     }
     fetchYachts()
   }, [])
-  if (!yachts) return <div>Loading...</div>
-
+  if (!yachts) return (
+    <div className="py-56 px-4 md:px-6 bg-blue-600">
+      <div className="flex flex-col items-center space-y-4 text-center">
+        <Spinner label="Loading..." color="warning" size="lg" />
+      </div>
+    </div>)
   return (
     <div className="booking-page mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-center">Book Your Luxury Yacht</h1>
@@ -75,8 +92,17 @@ export default function BookingForm() {
           <h2 className="text-2xl font-semibold text-default-400">Booking Details</h2>
         </CardHeader>
         <CardBody>
-          <form action={sendBookingAction} className="space-y-6 text-gray-600">
+          <Toaster />
+          <Form action={sendBookingAction} 
+          onSuccess={() => {
+            alert("Your application is updated.")
+          }}
+          onError={() => {
+            alert("Submission has failed.")
+          }} 
+          control={control} className="space-y-6 text-gray-600" id="bookingForm">
             <Select 
+            {...register("selectedYacht", { required: true })}
               isRequired
               label="Select Yacht" 
               placeholder="Choose a yacht"
@@ -97,6 +123,7 @@ export default function BookingForm() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-600">
               <Input
+              {...register("startdate", { required: true, valueAsDate: true })}
                 isRequired
                 type="date"
                 label="Start Date"
@@ -108,6 +135,7 @@ export default function BookingForm() {
                 startContent={<CalendarIcon className="w-5 h-5 text-default-400" />}
               />
               <Input
+              {...register("enddate", { required: true, valueAsDate: true })}
                 isRequired
                 type="date"
                 label="End Date"
@@ -121,6 +149,7 @@ export default function BookingForm() {
             </div>
             <Divider />
             <Input
+            {...register("name", { required: {value: true, message: 'Name required'}, minLength: {value: 2, message: 'Min 2 char'} })}
               isRequired
               type="text"
               label="Full Name"
@@ -130,8 +159,10 @@ export default function BookingForm() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-
+            {errors.name && <Error message={errors.name.message} />}
             <Input
+            {...register("email", { required: { value: true, message: 'Email Required' },
+                        pattern: { value: '/.+@.+/', message: 'Invalid Email' } })}
               isRequired
               type="email"
               label="Email Address"
@@ -142,8 +173,10 @@ export default function BookingForm() {
               onChange={(e) => setEmail(e.target.value)}
               startContent={<EnvelopeIcon className="w-5 h-5 text-default-400" />}
             />
+            {errors.email && <Error message={errors.email.message} />}
 
             <Input
+            {...register("phone", { required: false })}
               type="tel"
               label="Phone Number"
               name="phone"
@@ -155,6 +188,7 @@ export default function BookingForm() {
             />
 
             <Textarea
+            {...register("request", { required: false })}
               type="text"
               label="Special Requests"
               name="request"
@@ -167,6 +201,8 @@ export default function BookingForm() {
             <Checkbox
               isSelected={agreeTerms}
               onValueChange={setAgreeTerms}
+              name="terms"
+              id="terms"
             >
               <span className='text-blue-600'>I agree to the terms and conditions</span>
             </Checkbox>
@@ -176,10 +212,17 @@ export default function BookingForm() {
                 Submit Booking Request
               </Button>
             </div>
-          </form>
+          </Form>
         </CardBody>
       </Card>
     </div>
     
   )
+}
+function Error({ message }) {
+  return (
+      <span className="bg-red-50 text-red-600 text-sm">
+          {message}
+      </span>
+  );
 }

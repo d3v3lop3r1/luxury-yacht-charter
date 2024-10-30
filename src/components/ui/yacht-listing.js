@@ -77,7 +77,7 @@ const YachtListing = () => {
               </div>
               <div className="flex justify-between w-full items-center">
                 <span className="text-l text-gray-700">
-                    <FormattedPrice price = {yacht.price_from}></FormattedPrice> / day</span>
+                    <FormattedPrice price = {yacht.price_from}></FormattedPrice></span>
                 <Button color='primary' size='lg' as={Link} href={`/yachts/${yacht.id}`}>
                   View Details
                 </Button>
