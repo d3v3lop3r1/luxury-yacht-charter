@@ -19,7 +19,7 @@ export const sendEmail = async (prevState: State, formData: FormData) => {
     await resend.emails.send({
       from: "Zlatna Luka <support@zlatnaluka.rs>",
       to: email,
-      subject: "Email from site",
+      subject: "You sent a message to Zlatna Luka Luxury Yachting",
       react: EmailTemplate({ name, email, message })
     })
     return {
