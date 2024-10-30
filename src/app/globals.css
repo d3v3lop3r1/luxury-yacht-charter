@@ -67,7 +67,7 @@ body {
   background-size: cover;
   background-position-y: center;
   background-position-x: center;
-
+  text-shadow: 2px 2px 5px rgb(35, 35, 35);
   height: 600px;
   display: flex;
   flex-direction: column;
@@ -83,6 +83,7 @@ body {
   background-size: cover;
   background-position-y: center;
   background-position-x: center;
+  text-shadow: 2px 2px 5px rgb(35, 35, 35);
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -96,6 +97,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: center;
+  text-shadow: 2px 2px 5px rgb(35, 35, 35);
   height: 400px;
   display: flex;
   flex-direction: column;
