@@ -28,7 +28,7 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
   
 export default function BookingForm() {
-  const { register, control, formState: { errors } } = useForm();
+  const { register, formState: { errors } } = useForm();
 
   const [selectedYacht, setSelectedYacht] = useState('')
   const [startDate, setStartDate] = useState('')
@@ -93,14 +93,7 @@ export default function BookingForm() {
         </CardHeader>
         <CardBody>
           <Toaster />
-          <Form action={sendBookingAction} 
-          onSuccess={() => {
-            alert("Your application is updated.")
-          }}
-          onError={() => {
-            alert("Submission has failed.")
-          }} 
-          control={control} className="space-y-6 text-gray-600" id="bookingForm">
+          <form action={sendBookingAction} >
             <Select 
             {...register("selectedYacht", { required: true })}
               isRequired
@@ -161,8 +154,7 @@ export default function BookingForm() {
             />
             {errors.name && <Error message={errors.name.message} />}
             <Input
-            {...register("email", { required: { value: true, message: 'Email Required' },
-                        pattern: { value: '/.+@.+/', message: 'Invalid Email' } })}
+            {...register("email", { required: true })}
               isRequired
               type="email"
               label="Email Address"
@@ -212,7 +204,7 @@ export default function BookingForm() {
                 Submit Booking Request
               </Button>
             </div>
-          </Form>
+          </form>
         </CardBody>
       </Card>
     </div>
