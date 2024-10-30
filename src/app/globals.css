@@ -107,6 +107,10 @@ body {
   color: white;
 }
 
+.text-shadow{
+  text-shadow: 2px 2px 5px rgb(35, 35, 35);
+}
+
 .hero-text {
   position: absolute;
   bottom: 30px;

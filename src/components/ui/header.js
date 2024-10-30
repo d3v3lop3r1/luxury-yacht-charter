@@ -52,24 +52,24 @@ export default function Header(){
             <Button color='primary' as={Link} href={"/booking"}>Book Now</Button>
           </NavbarItem>
         </NavbarContent>
-        <NavbarMenu className='mt-5'>
+        <NavbarMenu className='mt-5 text-shadow'>
           <NavbarMenuItem >
-            <Link color='foreground' className={`${pathname === '/' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/">
+            <Link color='foreground' className={`${pathname === '/' ? 'active' : ''} text-md font-medium hover:underline underline-offset-4`} href="/">
               Home
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link color='foreground' className={`${pathname === '/yachts' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/yachts">
+            <Link color='foreground' className={`${pathname === '/yachts' ? 'active' : ''} text-md font-medium hover:underline underline-offset-4`} href="/yachts">
               Yacht Fleet
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link color='foreground' className={`${pathname === '/about-us' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/about-us">
+            <Link color='foreground' className={`${pathname === '/about-us' ? 'active' : ''} text-md font-medium hover:underline underline-offset-4`} href="/about-us">
               About Us
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link color='foreground' className={`${pathname === '/contact' ? 'active' : ''} text-sm font-medium hover:underline underline-offset-4`} href="/contact">
+            <Link color='foreground' className={`${pathname === '/contact' ? 'active' : ''} text-md font-medium hover:underline underline-offset-4 `} href="/contact">
               Contact
             </Link>
           </NavbarMenuItem>
