@@ -38,7 +38,7 @@ export const sendEmail = async (prevState: State, formData: FormData) => {
 
 // Send Booking
 export const sendBooking = async (prevState: State, formData: FormData) => {
-  console.log("sendBooking fuction start")
+  console.log("sendBooking function start")
   const yacht = formData.get("yacht") as string
   const startdate = formData.get("startdate") as string
   const enddate = formData.get("enddate") as string

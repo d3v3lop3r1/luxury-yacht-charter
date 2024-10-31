@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^3.0.2",
     "@emotion/react": "^11.13.3",
     "@heroicons/react": "^2.1.5",
+    "@hookform/resolvers": "^3.9.1",
     "@lucide/lab": "^0.1.2",
     "@mailchimp/mailchimp_transactional": "^1.0.59",
     "@nextui-org/button": "^2.0.38",
@@ -41,7 +42,8 @@
     "react-loader-spinner": "^6.1.6",
     "resend": "^4.0.0",
     "sharp": "^0.33.5",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
