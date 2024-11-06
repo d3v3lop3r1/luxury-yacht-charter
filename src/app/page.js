@@ -2,11 +2,12 @@
 import { Anchor, Calendar, Globe, Phone } from "lucide-react"
 // import Link from "next/link"
 import "@/app/globals.css"
-import { Suspense } from "react"
-import Yachts from "@/components/ui/yacht-listing"
-import Hero from "../components/ui/hero"
-import Destinations from "../components/ui/destinations"
+import YachtsListing from "@/components/ui/yachts-listing"
+import Hero from "@/components/ui/hero"
+import Destinations from "@/components/ui/destinations"
 import {Link, Button} from "@nextui-org/react";
+import yachtsDb from "@/components/api/database.json"
+
 
 
 
@@ -24,9 +25,11 @@ export default function YachtCharterHome() {
         <section className="featured-yachts w-full py-12 md:py-24 lg:py-32 bg-gray-200">
           <div className="px-4 md:px-6">
             <h2 className="featured-yachts-text text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Our Exclusive Yacht Collection</h2>
-            <Suspense fallback={<h2>Loading...</h2>}>
-              <Yachts shortText={true} detailsBtn={false}/>
-            </Suspense>
+            <div className="mx-auto px-4 py-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <YachtsListing yachts={yachtsDb} imageW={400} imageH={300}/>
+                </div>
+            </div>
           </div>
         </section>
 

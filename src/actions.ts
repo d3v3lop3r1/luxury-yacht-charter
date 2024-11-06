@@ -3,8 +3,11 @@ import { Resend } from "resend"
 import EmailTemplate from "./components/ui/email-template"
 //import SubscriptionTemplate from "./components/ui/subscription-template"
 import BookingTemplate from "./components/ui/booking-template"
+import { log } from "console"
+import { FieldErrors } from "react-hook-form"
 //import { render } from "@react-email/render"
 interface State {
+  errors: string,
   error: string | null
   success: boolean
 }
@@ -74,13 +77,9 @@ export const sendSubscription = async (prevState: State, formData: FormData) => 
   const email = formData.get("email") as string
   try {
     const resend = new Resend(process.env.RESEND_API_KEY)
-    // await resend.emails.send({
-    //   from: "Zlatna Luka <support@zlatnaluka.rs>",
-    //   to: email,
-    //   subject: "New Subscription",
-    //   react: SubscriptionTemplate({ email })
-    // })
-    resend.contacts.create({
+    //resend.contacts.list({audienceId: 'cfc4f049-f3cd-4614-9adb-03f89dd677af'});
+
+      resend.contacts.create({
       email: email,
       unsubscribed: false,
       audienceId: 'cfc4f049-f3cd-4614-9adb-03f89dd677af'

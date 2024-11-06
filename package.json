@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^3.0.2",
     "@emotion/react": "^11.13.3",
     "@heroicons/react": "^2.1.5",
+    "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^3.9.1",
     "@lucide/lab": "^0.1.2",
     "@mailchimp/mailchimp_transactional": "^1.0.59",

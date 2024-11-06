@@ -2,45 +2,33 @@
 import { sendBooking } from "@/actions"
 import { useEffect } from "react"
 import { useFormState } from "react-dom"
-import { useForm, Form } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Toaster, toaster } from "@/components/ui/toaster"
-import { 
-    Input,
-    Select,
-    Textarea,
-    Button,
-    Checkbox,
-    Divider,
-    Card, 
-    CardBody, 
-    CardHeader,
-    SelectItem,
-    Spinner
-  } from "@nextui-org/react"
-  
+import { Input, Select, Textarea, Button, Checkbox, Divider, Card, CardBody, CardHeader, SelectItem, Spinner } from "@nextui-org/react"
 import { EnvelopeIcon, CalendarIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import React, { useState } from 'react'
-import firebaseConfig from '@/firebaseConfig';
-import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs } from 'firebase/firestore'
-import { DevTool } from "@hookform/devtools";
+import yachtsDb from "@/components/api/database.json"
+//import { DevTool } from "@hookform/devtools";
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
-  
+const defaultValues = {
+  name: "",
+  email: "",
+  phone: "",
+}
 
 export default function BookingForm() {
-  const { register, control, trigger, formState: { errors } } = useForm({
-    mode: "onChange"
+  const { register, control, trigger, reset, formState: { errors, isValid } } = useForm({
+    defaultValues,
+    mode: 'all' 
   });
   const [sendBookingState, sendBookingAction] = useFormState(sendBooking, {
     error: null,
     success: false
-  },errors)
+  }
+)
 
 
-  const [selectedYacht, setSelectedYacht] = useState(new Set([]))
+  const [selectedYacht, setSelectedYacht] = useState([])
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [name, setName] = useState('')
@@ -48,7 +36,6 @@ export default function BookingForm() {
   const [phone, setPhone] = useState('')
   const [specialRequests, setSpecialRequests] = useState('')
   const [agreeTerms, setAgreeTerms] = useState(false)
-  const [yachts, setYachts] = useState()
 
   
   useEffect(() => {
@@ -65,7 +52,7 @@ export default function BookingForm() {
       setPhone('')
       setSpecialRequests('')
       setAgreeTerms(false)
-
+      reset();
     }
     if (sendBookingState.error) {
       toaster.create({
@@ -73,17 +60,9 @@ export default function BookingForm() {
         type: "error"
       })
     }
-  }, [sendBookingState])
+  }, [sendBookingState, reset])
+  const yachts = Object.entries(yachtsDb.yachts)
 
-  useEffect(() =>{
-    async function fetchYachts(){
-      const yachtCollection = collection(db, 'yachts')
-      const results = await getDocs(yachtCollection)
-      const yachtsData = results.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setYachts(yachtsData)
-    }
-    fetchYachts()
-  }, [])
   if (!yachts) return (
     <div className="py-56 px-4 md:px-6 bg-blue-600">
       <div className="flex flex-col items-center space-y-4 text-center">
@@ -112,7 +91,7 @@ export default function BookingForm() {
               selectedKeys={selectedYacht}
               onSelectionChange={setSelectedYacht}
             >
-            {(yacht) => <SelectItem key={yacht.id} textValue={yacht.name} className=" text-gray-600">{yacht.name} - {yacht.model} - {yacht.cabins} cabins</SelectItem>}
+            {(yacht) => <SelectItem key={yacht[0]} textValue={yacht[1].name} className=" text-gray-600">{yacht[1].name} - {yacht[1].model} - {yacht[1].cabins} cabins</SelectItem>}
             </Select>
             {errors.yacht && <Error message={errors.yacht.message} />}
 
@@ -206,18 +185,18 @@ export default function BookingForm() {
               onValueChange={setAgreeTerms}
               name="terms"
               id="terms"
+              onClick={() => {trigger(["name", "email", "startdate", "enddate", "yacht", "terms"])}}
             >
             <span className='text-blue-600'>I agree to the terms and conditions</span>
             </Checkbox>
             <span className="p-3">{errors.terms && <Error message={errors.terms.message} />}</span>
 
             <div className="text-right">
-              <Button onClick={() => {trigger(["name", "email"])}} color="primary" type="submit" size="lg">
+              <Button isDisabled={!isValid} color="primary" type="submit" size="lg">
                 Submit Booking Request
               </Button>
             </div>
           </form>
-          <DevTool control={control} /> {/* set up the dev tool */}
         </CardBody>
       </Card>
     </div>
