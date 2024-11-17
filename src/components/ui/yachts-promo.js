@@ -2,12 +2,10 @@ import { Card, CardBody, CardFooter, Button,Link, Image } from "@nextui-org/reac
 import yachtsDb from "@/components/api/database.json"
 
 
-export default function YachtsListing(imageW, imageH){
+export default function YachtsPromo(imageW, imageH){
   const yachts = Object.entries(yachtsDb.yachts)
   const url = "/images/yachts/"
-  return yachts.map(([key,val],i)=>{
-    const rndImage = Math.random()*(val.images.exterior.length+1)
-    return (
+  return yachts.map(([key,val],i)=>(
       <div key={key}>
       <Card  className="w-full bg-white rounded-lg shadow-md overflow-hidden p-2">
       <CardBody className="p-0">
@@ -23,10 +21,6 @@ export default function YachtsListing(imageW, imageH){
       <CardFooter className="flex flex-col items-start">
         <h2 className="text-2xl font-semibold mb-2 text-gray-700">{val.name}</h2>
         <p className="text-gray-600 mb-2 text-xl">{val.model}</p>
-        <div className="flex justify-between w-full mb-4 text-gray-500">
-          <span>Length: {val.length}m</span>
-          <span>Capacity: {val.guests} guests</span>
-        </div>
         <div className="flex justify-between w-full items-center">
           <span className="text-l text-gray-700">
               <FormattedPrice price = {val.price_from}></FormattedPrice></span>
@@ -38,7 +32,7 @@ export default function YachtsListing(imageW, imageH){
     </Card>
     </div>
 
-  )})
+  ))
 }
   function FormattedPrice({price}){
     const formattedPrice = new Intl.NumberFormat('en-US', {

@@ -1,17 +1,9 @@
-import firebaseConfig from '@/firebaseConfig';
-import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import yachtsDb from "@/components/api/database.json"
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
-
-export default async function getYachtDetails({id}){
+export default async function getYachtDetails(id){
     console.log("Id :",id)
     try {
-    const yachtCollection = collection(db, 'yachts')
-    const yachtSnapshot = await getDocs(yachtCollection)
-    const datas = yachtSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const datas = Object.entries(yachtsDb.yachts.yachts).map(([key,val],i)=>{ key:key; val:val})
     const yachtFounded = datas.find(data => data.id === id)
     console.log("Founded :",yachtFounded.name)
     return yachtFounded

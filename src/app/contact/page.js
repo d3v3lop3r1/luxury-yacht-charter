@@ -5,11 +5,19 @@ import {
   CardHeader,
   Divider
 } from "@nextui-org/react"
+import { useState, useEffect } from "react"
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import EmailForm from "@/components/ui/email-form"
 
 
 const ContactPage = () => {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {<div> Loading ...</div>}
+      
 
   return (
     <div className=" contact-us container mx-auto px-4 py-8">

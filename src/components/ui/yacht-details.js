@@ -1,100 +1,86 @@
 import { Card, CardBody, CardHeader, Divider, Button, Tabs, Tab, Input, Textarea, Chip, Spinner } from "@nextui-org/react"
-import React, { useEffect, useState } from 'react'
-import firebaseConfig from '@/firebaseConfig';
-import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import React from 'react'
 import YachtImages from "@/components/ui/yachtimages"
 import YachtImage from "@/components/ui/yachtimage"
 //import placeholder from "@/public/images/placeholder.svg";
 import FormattedPrice from "@/components/ui/FormattedPrice"
 //import Image from "next/image";
+import yachtsDb from "@/components/api/database.json"
 
+const YachtDetails = ({id, onLoadDetails}) => {
+  const yachts = Object.entries(yachtsDb.yachts)
+  const yachtsObj = yachts.map(([key,val])=>{
+    return {id:key,yacht:val}
+  })
 
+  const selectedYacht = yachtsObj.find(yacht=>{
+    console.log(yacht.id)
+    console.log(id)
+    return yacht.id===id
+  })
+  
+  console.log("Selected yacht",selectedYacht)
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
+  const handleImageData=()=>{
+    console.log("handleImageData started")
 
-const YachtDetails = (props) => {
-  const id = props.id
-  const [yacht, setYacht] = useState([])
-  const [loading, setLoading] = useState([])
-  useEffect(() => {
-    const fetchYacht = async () => {
-      try {
-        const yachtCollection = collection(db, 'yachts')
-        const yachtSnapshot = await getDocs(yachtCollection)
-        const datas = yachtSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        const yachtFounded = datas.find(data => data.id === id)
-        //console.log("Founded :",yachtFounded)
-        setYacht(yachtFounded)
+    const imagesRef = `/images/yachts`
+    const rndImage = Math.floor(Math.random()*(selectedYacht.yacht.images.exterior.length))
+    const urlLink = imagesRef+selectedYacht.yacht.images.exterior[rndImage]
 
-        setLoading(false)
-      } catch (error) {
-        console.error("Error fetching yachts:", error)
-        setLoading(false)
-      }
-    }
-
-    fetchYacht()
-  }, [id])
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <Spinner size="lg" />
-      </div>
-    )
+    onLoadDetails(selectedYacht.yacht.name, urlLink)
   }
+
+  handleImageData()
 
   return (
     <div className="grid gap-2 md:grid-cols-1 lg:grid-cols-1">
       <div>
         <Card className="mb-8 bg-white rounded-lg shadow-md overflow-hidden">
           <CardHeader className="flex justify-between items-center px-6 py-4">
-            <h1 className="text-3xl font-bold text-gray-500 mb-2">{yacht.name}</h1>
-            <Chip color="primary" size="lg">{yacht.model}</Chip>
+            <h1 className="text-3xl font-bold text-gray-500 mb-2">{selectedYacht.yacht.name}</h1>
+            <Chip color="primary" size="lg">{selectedYacht.yacht.model}</Chip>
           </CardHeader>
           <Divider className="my-4"/>
           <CardBody>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <YachtImage
-                  name={yacht.name}
-                  imageW={400}
+                  name={selectedYacht.yacht.name}
                   imageH={400}
                   className="w-full h-[400px] object-cover rounded-lg"
                 />
                 <div>
                     <YachtImages
-                      name={yacht.name}
-                      className="h-32 object-cover rounded-lg"
+                    imageW={200}
+                    name={selectedYacht.yacht.name}
+                    className="h-32 object-cover rounded-lg"
                     />
                 </div>
               </div>
               <div>
-                <p className="text-gray-600 mb-4">{yacht.short_text}</p>
+                <p className="text-gray-600 mb-4">{selectedYacht.yacht.short_text}</p>
                 <div className="grid grid-cols-2 gap-4 mb-4 text-gray-600 shadow-lg p-5">
                   <div>
-                    <strong>Length:</strong> {yacht.length}m
+                    <strong>Length:</strong> {selectedYacht.yacht.length}m
                   </div>
                   <div>
-                    <strong>Capacity:</strong> {yacht.guests} person
+                    <strong>Capacity:</strong> {selectedYacht.yacht.guests} person
                   </div>
                   <div>
-                    <strong>Cabins:</strong> {yacht.cabins}
+                    <strong>Cabins:</strong> {selectedYacht.yacht.cabins}
                   </div>
                   <div>
-                    <strong>Crew:</strong> {yacht.crew} person
+                    <strong>Crew:</strong> {selectedYacht.yacht.crew} person
                   </div>
                 </div>
-                <p className="text-gray-600 mb-4">{yacht.long_text}</p>
+                <p className="text-gray-600 mb-4">{selectedYacht.yacht.long_text}</p>
                 <div className="grid grid-cols-2 gap-4 mb-4 justify-center justify-items-center">
-                  <Chip className="text-l font-bold p-2" color="secondary">Low season price: <FormattedPrice price={yacht.low_season_price}/></Chip>
-                  <Chip className="text-l font-bold p-2" color="secondary">High season price: <FormattedPrice price={yacht.high_season_price}/></Chip>
+                  <Chip className="text-l font-bold p-2" color="secondary">Low season price: <FormattedPrice price={selectedYacht.yacht.low_season_price}/></Chip>
+                  <Chip className="text-l font-bold p-2" color="secondary">High season price: <FormattedPrice price={selectedYacht.yacht.high_season_price}/></Chip>
                 </div>
                 <Button color="primary" size="lg" className="w-full">
-                  Book Now - from <FormattedPrice price={yacht.price_from}/>
+                  Book Now - from <FormattedPrice price={selectedYacht.yacht.price_from}/>
                 </Button>
               </div>
             </div>
@@ -108,7 +94,7 @@ const YachtDetails = (props) => {
               <CardBody>
                 <h2 className="text-2xl font-bold mb-4 text-gray-400">Onboard Amenities</h2>
                 <ul className="grid grid-cols-2 gap-4 text-gray-600">
-                  {(yacht.amenities.split(",")).map((amenitie, index)=>{
+                  {(selectedYacht.yacht.amenities.split(",")).map((amenitie, index)=>{
                     return(
                       <li key={index} className="flex items-center">
                         <svg className="w-6 h-6 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +113,7 @@ const YachtDetails = (props) => {
               <CardBody>
                 <h2 className="text-2xl font-bold mb-4 text-gray-400">General Infos</h2>
                 <ul className="grid grid-cols-2 gap-4 text-gray-600">
-                  {(yacht.general_infos.split(",")).map((info, index)=>{
+                  {(selectedYacht.yacht.general_infos.split(",")).map((info, index)=>{
                     return(
                       <li key={index} className="flex items-center">
                         <svg className="w-6 h-6 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
